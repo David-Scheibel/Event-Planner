@@ -8,22 +8,27 @@ import Navbar from './Navbar'
 
 const EventsAPI = "http://localhost:3000/events"
 
-function CreateEvent (props) {
+
+export default function CreateEvent (props) {
 
     console.log(props)
 
-    // const [title, setTitle] = useState(null)
     const [startDateTime, setStartDateTime] = useState(null)
     const [endDateTime, setEndDateTime] = useState(null)
 
     const createEvent = (e) => {
         e.preventDefault()
 
-        // console.log(e.target[0].value)
-        // console.log(e.target[1].value)
-        // console.log(e.target[2].value)
-        console.log(startDateTime)
-        console.log(endDateTime)
+        let parseStart = new Date(startDateTime)
+        let parseEnd = new Date(endDateTime)
+
+        let parseStartDate = `${parseStart.getMonth()+1}/${parseStart.getDate()}/${parseStart.getFullYear()}`
+        let parseStartTime = `${parseStart.getHours()}:${parseStart.getMinutes()}`
+        let concStartDateTime = `${parseStartDate} ${parseStartTime}`
+
+        let parseEndDate = `${parseEnd.getMonth()+1}/${parseEnd.getDate()}/${parseEnd.getFullYear()}`
+        let parseEndTime = `${parseEnd.getHours()}:${parseEnd.getMinutes()}`
+        let concEndDateTime = `${parseEndDate} ${parseEndTime}`
 
 
         const postObj = {
@@ -31,16 +36,11 @@ function CreateEvent (props) {
             descritpion: e.target[1].value,
             thumbnail: e.target[2].value,
             category: null,
-            start: startDateTime,
-            end: endDateTime,
-            profile: {
-                id: 1,
-                nickname: "empty"
-            }
+            start: concStartDateTime,
+            end: concEndDateTime,
+            profile_id: 1                   // make dynamic after fixing state-props pass through
         }
         
-        console.log(postObj)
-
         fetch(EventsAPI, {
             method: "POST",
             headers: {
@@ -109,5 +109,3 @@ function CreateEvent (props) {
         </div>
     )
 }
-
-export default CreateEvent

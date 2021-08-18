@@ -115,6 +115,7 @@ class CalendarView extends Component {
 
                     <Navbar 
                         updateModalShow={this.state.updateModalShow}
+                        nickname={this.props.nickname}
                     />
                     
                     <WelcomeSplash 

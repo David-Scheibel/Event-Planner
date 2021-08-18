@@ -7,24 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # destroys seed data
-puts "destroying all profies ..."
-Profile.destroy_all
 puts "destroying all users ..."
 User.destroy_all
-puts "destroying all categories ..."
-Category.destroy_all
+puts "destroying all profies ..."
+Profile.destroy_all
 puts "destroying all events ..."
 Event.destroy_all
+puts "destroying all categories ..."
+Category.destroy_all
 
 # resets id info of seed data to 1
 puts "resetting all users ..."
 User.reset_pk_sequence
 puts "resetting all profiles ..."
 Profile.reset_pk_sequence
-puts "resetting all categories ..."
-Category.reset_pk_sequence
 puts "resetting all events ..."
 Event.reset_pk_sequence
+puts "resetting all categories ..."
+Category.reset_pk_sequence
 
 # creates seed data
 puts "creating users..."
