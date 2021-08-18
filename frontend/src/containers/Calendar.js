@@ -7,18 +7,13 @@ import interactionPlugin from '@fullcalendar/interaction'
 import WelcomeSplash from '../components/WelcomeSplash'
 import Navbar from '../components/Navbar'
 
-const UserAPI = "http://localhost:3000/users"
-const ProfileAPI = "http://localhost:3000/profiles"
-const EventAPI = "http://localhost:3000/events"
 
-// const appointments = [{title: "Beach Week", start: "08-19-21, 15:24:00"}, 
-//                       {title: "Game of Thrones Marathon", start: "08-21-21, 18:00:00", end: "08-23-21, 03:00:00"}]
+const ProfileAPI = "http://localhost:3000/profiles"
 
 
 class CalendarView extends Component {
 
     state = {
-        profileObj: {},
         previewEvents: {},
         // eventObj: {},
 
@@ -27,7 +22,7 @@ class CalendarView extends Component {
         username: "",
 
         modalShow: false,
-        date: ""
+        date: ""               // maybe need current date
     }
 
     // user auth token componentDidMount (not working)
@@ -61,29 +56,13 @@ class CalendarView extends Component {
     //     })
     // }
 
-    // componentDidMount() {
-    //     fetch(ProfileAPI)
-    //         .then(r => r.json())
-    //         // .then(r => console.log(r))
-    //         .then(r => this.setState({
-    //             profileObj: r,
-    //             nickname: r == null ? "null" : r.map(profile => profile.nickname),
-    //             username: r == null ? "null" : r.map(profile => profile.user).map(user => user.username)
-    //     }))
 
-    //     fetch(EventAPI)
-    //         .then(r => r.json())
-    //         .then(r => this.setState({
-    //             previewEvents: this.formatEvents(r)
-    //     }))
-    // }
-
-    componentDidMount() {
+    componentDidMount() {           // make dynamic with auth
         fetch(ProfileAPI)
             .then(r => r.json())
             // .then(r => console.log(r[0].user.username))
             .then(r => this.setState({
-                profileObj: r[0],
+                profile: r[0].id,
                 nickname: r[0] == null ? "null" : r[0].nickname,
                 username: r[0] == null ? "null" : r[0].user.username,
                 previewEvents: this.formatEvents(r[0].events)
@@ -91,7 +70,6 @@ class CalendarView extends Component {
     }
 
     formatEvents(r) {
-        // console.log(this.state.previewEvents)
 
         return r.map(appointment => {
             const {id, title, start, end} = appointment
