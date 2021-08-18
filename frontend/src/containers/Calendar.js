@@ -81,16 +81,16 @@ class CalendarView extends Component {
     componentDidMount() {
         fetch(ProfileAPI)
             .then(r => r.json())
-            .then(r => console.log(r))
-            // .then(r => this.setState({
-            //     profileObj: r,
-            //     nickname: r == null ? "null" : r.map(profile => profile.nickname),
-            //     username: r == null ? "null" : r.map(profile => profile.user).map(user => user.username)
-        // }))
+            // .then(r => console.log(r[0].user.username))
+            .then(r => this.setState({
+                profileObj: r[0],
+                nickname: r[0] == null ? "null" : r[0].nickname,
+                username: r[0] == null ? "null" : r[0].user.username,
+                previewEvents: this.formatEvents(r[0].events)
+        }))
     }
 
     formatEvents(r) {
-
         // console.log(this.state.previewEvents)
 
         return r.map(appointment => {
