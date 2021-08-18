@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 
 import WelcomeSplash from '../components/WelcomeSplash'
 import Navbar from '../components/Navbar'
+import CreateEvent from '../components/CreateEvent'
 
 
 const ProfileAPI = "http://localhost:3000/profiles"
@@ -15,9 +16,8 @@ class CalendarView extends Component {
 
     state = {
         previewEvents: {},
-        // eventObj: {},
 
-        profile: 0,            // sets state to current user's profile
+        profileId: 0,            // sets state to current user's profile
         nickname: "",
         username: "",
 
@@ -62,7 +62,7 @@ class CalendarView extends Component {
             .then(r => r.json())
             // .then(r => console.log(r[0].user.username))
             .then(r => this.setState({
-                profile: r[0].id,
+                profileId: r[0].id,
                 nickname: r[0] == null ? "null" : r[0].nickname,
                 username: r[0] == null ? "null" : r[0].user.username,
                 previewEvents: this.formatEvents(r[0].events)
@@ -128,6 +128,11 @@ class CalendarView extends Component {
                         events={this.state.previewEvents}
                         eventClick={this.handleEventClick}
                         eventDrop={this.handleEventDrop}
+                    />
+
+                    <CreateEvent 
+                        nickname={this.state.nickname}
+                        profileId={this.state.profile}
                     />
 
                 </div>

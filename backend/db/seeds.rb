@@ -7,24 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # destroys seed data
-puts "destroying all events ..."
-Event.destroy_all
-puts "destroying all categories ..."
-Category.destroy_all
 puts "destroying all profies ..."
 Profile.destroy_all
 puts "destroying all users ..."
 User.destroy_all
+puts "destroying all categories ..."
+Category.destroy_all
+puts "destroying all events ..."
+Event.destroy_all
 
 # resets id info of seed data to 1
 puts "resetting all users ..."
 User.reset_pk_sequence
 puts "resetting all profiles ..."
 Profile.reset_pk_sequence
-puts "destroying all events ..."
-Event.destroy_all
 puts "resetting all categories ..."
 Category.reset_pk_sequence
+puts "resetting all events ..."
+Event.reset_pk_sequence
 
 # creates seed data
 puts "creating users..."
@@ -37,13 +37,13 @@ puts "creating profiles..."
 
 puts "creating events..."
     Event.create(title: "Bar Crawl", 
-                 start: "08-06-21, 15:00:00", 
-                 end: "8-8-21, 12:00:00", 
+                 start: "8/6/21 4:00 PM", 
+                 end: "8-8-21, 12:00", 
                  description: "Very good, yes.", 
                  profile_id: Profile.first.id)
     Event.create(title: "Doctor's Appointment", 
-                 start: "08-09-21, 13:00:00", 
-                 end: "08-09-21, 15:00:00", 
+                 start: "08-09-21 2:00 PM", 
+                 end: "08-09-21 3:00 PM", 
                  description: "We hate the doctors...", 
                  profile_id: Profile.first.id)
     Event.create(title: "Game of Thrones Marathon", 
