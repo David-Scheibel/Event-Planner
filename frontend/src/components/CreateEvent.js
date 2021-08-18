@@ -6,8 +6,8 @@ import DateTimePicker from 'react-datetime-picker'
 
 import Navbar from './Navbar'
 
-const EventsAPI = "http://localhost:3000/events"
-
+const EventsAPI = "http://localhost:3000/events/"
+const ThumbnailAPI = "http://localhost:3000/thumbnails/"
 
 export default function CreateEvent (props) {
 
@@ -31,26 +31,56 @@ export default function CreateEvent (props) {
         let concEndDateTime = `${parseEndDate} ${parseEndTime}`
 
 
-        const postObj = {
+        const postObjEvent = {
             title: e.target[0].value,
-            descritpion: e.target[1].value,
-            thumbnail: e.target[2].value,
-            category: null,
+            description: e.target[1].value,
             start: concStartDateTime,
             end: concEndDateTime,
             profile_id: 1                   // make dynamic after fixing state-props pass through
         }
-        
+
+        // const postObjThumbnail = {
+        //     image: e.target[2].value,
+        //     event_id: 1
+        // }
+
+        console.log(postObjEvent)
+        // console.log(postObjThumbnail)
+
+        // const reqObj = {
+        //     headers: {"Content-Type": "application/json"},
+        //     method: "POST",
+        //     body: JSON.stringify({postObj})
+        // }
+
+        // fetch(EventsAPI, reqObj)
+        //     .then(r => r.json())       
+        //     .catch(() => alert("submit error"))
+
         fetch(EventsAPI, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(postObj)
+            body: JSON.stringify(postObjEvent)
         })
             .then(res => res.json())
             .then(res => console.log(res))
+            .then(console.log("posted new event object!"))
+            .catch(() => alert("event post error!"))
+
+        // fetch(ThumbnailAPI, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         'Accept': 'application/json'
+        //     },
+        //     body: JSON.stringify(postObjThumbnail)
+        // })
+        //     .then(res => res.json())
+        //     .then(res => console.log(res))
+        //     .catch(() => alert("thumbnail post error!"))
     }
 
 
@@ -75,10 +105,10 @@ export default function CreateEvent (props) {
                     <Form.Control type="description" placeholder="Event description" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicThumbnail">
+                {/* <Form.Group className="mb-3" controlId="formBasicThumbnail">
                     <Form.Label>Thumbnail</Form.Label>
                     <Form.Control type="thumbnail" placeholder="Add an event thumbnail (url)" />
-                </Form.Group>
+                </Form.Group> */}
 
                 <Form.Group className="mb-3" controlId="formBasicTitle"> 
                     <Form.Label>Start Date</Form.Label>

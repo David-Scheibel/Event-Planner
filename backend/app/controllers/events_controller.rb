@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    skip_before_action :verify_authenticity_token
 
     def index
         events = Event.all
@@ -7,13 +8,9 @@ class EventsController < ApplicationController
     end
 
     def create
-        event = event.create(event_params)
+        event = Event.create!(event_params)
 
-        if event.valid?
-            render json: event
-        else
-            render json: {error: "Unable to create this event."}
-        end
+        render json: event
     end
 
     def update

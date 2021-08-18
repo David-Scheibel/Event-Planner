@@ -13,7 +13,7 @@ const SignUp = () => {
         // console.log(e.target[1].value)
         // console.log(e.target[2].value)
 
-        fetch("http://localhost:3000/users", {
+        fetch("http://localhost:3000/users/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
