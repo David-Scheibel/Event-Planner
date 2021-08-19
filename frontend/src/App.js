@@ -60,7 +60,7 @@ class App extends Component {
 
     updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] })}
 
-    updateRemoveEvent = (e) => {this.setState({previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e.id)})}
+    updateRemoveEvent = (e) => {this.setState({previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e)})}
 
     updateEventId = (e) => {this.setState({eventId: e})}
 

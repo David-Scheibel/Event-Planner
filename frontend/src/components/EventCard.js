@@ -4,7 +4,7 @@ const EventCard = ( props ) => {
 
     const deleteEvent = (id) => {
 
-        fetch(`https://localhost:3000/events/${id}`, {
+        fetch(`http://localhost:3000/events/${id}`, {
             method: "DELETE",
             body: null
         })
