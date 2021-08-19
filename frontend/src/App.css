@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  min-width: 4rem;
+  max-width: 15rem;
+  min-height: 4rem;
+  max-height: 35rem;
+}

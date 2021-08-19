@@ -13,7 +13,7 @@ import Navbar from '../components/Navbar'
 const CalendarView = ( props) => {
 
     const handleEventClick = (e) => {
-        console.log("I clicked something")
+        console.log(`I clicked on ${e.event.extendedProps.title}`)
 
         props.updateEventId(e.event.extendedProps.id)
         props.filterEvents(e.event.extendedProps)
@@ -21,7 +21,7 @@ const CalendarView = ( props) => {
     }
 
     const handleEventDrop = (e) => {
-        console.log("I moved something")
+        console.log(`I moved ${e.event.extendedProps.title}`)
 
         console.log(e.event.extendedProps.id)
     }

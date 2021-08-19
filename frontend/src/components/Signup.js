@@ -9,9 +9,6 @@ const SignUp = () => {
 
     let signUp = (e) => {
         e.preventDefault()
-        // console.log(e.target[0].value)
-        // console.log(e.target[1].value)
-        // console.log(e.target[2].value)
 
         fetch("http://localhost:3000/users/", {
             method: "POST",

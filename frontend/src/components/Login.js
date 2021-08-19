@@ -9,8 +9,6 @@ const LogIn = ({  }) => {
 
     let logIn = (e) => {
         e.preventDefault()
-        // console.log(e.target[0].value)
-        // console.log(e.target[1].value)
 
         fetch("http://localhost:3000/login/", {
             method: "POST",

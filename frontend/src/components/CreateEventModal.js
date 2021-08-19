@@ -3,8 +3,8 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-
 const EventAPI = "http://localhost:3000/events"
+
 
 export default function CreateEventModal (props) {
 
