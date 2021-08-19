@@ -44,19 +44,6 @@ export default function CreateEvent (props) {
         //     event_id: 1
         // }
 
-        console.log(postObjEvent)
-        // console.log(postObjThumbnail)
-
-        // const reqObj = {
-        //     headers: {"Content-Type": "application/json"},
-        //     method: "POST",
-        //     body: JSON.stringify({postObj})
-        // }
-
-        // fetch(EventsAPI, reqObj)
-        //     .then(r => r.json())       
-        //     .catch(() => alert("submit error"))
-
         fetch(EventsAPI, {
             method: "POST",
             headers: {
