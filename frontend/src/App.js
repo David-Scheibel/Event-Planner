@@ -17,6 +17,7 @@ class App extends Component {
 
     state = {
         previewEvents: {},
+        filteredEvent: {},
 
         profileId: 0,            // sets state to current user's profile
         eventId: 0,
@@ -56,6 +57,10 @@ class App extends Component {
         })
     }
 
+    updateEvents = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] })}
+
+    updateEventId = (e) => {this.setState({eventId: e})}
+
     updateModalShow = (bool) => {
         this.setState({modalShow: bool})
         console.log("updateModalShow was clicked")
@@ -68,7 +73,7 @@ class App extends Component {
         console.log(e.event.extendedProps.id)
     }
 
-    updateEventId = (e) => {this.setState({eventId: e})}
+    filterEvents = (e) => {this.setState({ filteredEvent: e})}
 
 
     render () {
@@ -76,6 +81,7 @@ class App extends Component {
         return (
         <BrowserRouter>
             <div className="App">
+                {console.log(this.props.history)}
 
             <Switch>
                 <Route path='/' exact><Login /></Route>
@@ -85,17 +91,19 @@ class App extends Component {
                 <Route path='/calendar'>
                     <CalendarView 
                         previewEvents={this.state.previewEvents}
+                        nickname={this.state.nickname}
                         modalShow={this.state.modalShow}
                         profileId={this.state.profileId}
                         updateModalShow={this.updateModalShow}
                         handleEventDrop={this.handleEventDrop}
                         updateEventId={this.updateEventId}
+                        filterEvents={this.filterEvents}
                     />
                 </Route>
 
                 <Route path='/events/:id'>
                     <Event 
-                        eventObj={this.state.previewEvents}
+                        filterEvent={this.state.filteredEvent}
                     />
                 </Route>
 
@@ -103,6 +111,7 @@ class App extends Component {
                     <CreateEvent
                         profileId={this.state.profileId}
                         nickname={this.state.nickname}
+                        updateEvents={this.updateEvents}
                     />
                 </Route>
 

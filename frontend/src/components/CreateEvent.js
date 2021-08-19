@@ -51,6 +51,7 @@ export default function CreateEvent ({ profileId }) {
             body: JSON.stringify(postObjEvent)
         })
             .then(res => res.json())
+            // .then(newEvent => {this.props.updateEvents(newEvent)})
             .then(res => console.log(res))
             .then(console.log("posted new event object!"))
             .catch(() => alert("event post error!"))

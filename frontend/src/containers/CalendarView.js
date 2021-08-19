@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import { withRouter } from 'react-router-dom';
+
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
@@ -12,13 +13,16 @@ import Navbar from '../components/Navbar'
 const CalendarView = ( props) => {
 
     const handleEventClick = (e) => {
-        props.history.push(`/events/${e.event.extendedProps.id}`)
-        props.updateEventId(e.event.extendedProps.id)
         console.log("I clicked something")
+
+        props.updateEventId(e.event.extendedProps.id)
+        props.filterEvents(e.event.extendedProps)
+        props.history.push(`/events/${e.event.extendedProps.id}`)
     }
 
     const handleEventDrop = (e) => {
         console.log("I moved something")
+
         console.log(e.event.extendedProps.id)
     }
 
@@ -28,12 +32,12 @@ const CalendarView = ( props) => {
         <div>
 
             <Navbar 
-                // updateModalShow={this.props.updateModalShow}
-                // nickname={this.props.nickname}
+                updateModalShow={props.updateModalShow}
+                nickname={props.nickname}
             />
             
             <WelcomeSplash 
-                // nickname={this.state.nickname}
+                nickname={props.nickname}
             />
             
             <FullCalendar 

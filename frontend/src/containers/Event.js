@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 
-class Event extends Component {
 
-    render () {
+const Event = ({ filterEvent }) => {
 
-        return (
-            <div>
-                EVENT VIEW
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h3>{filterEvent == null ? " " : `It's time for a ${filterEvent.title}!`}</h3>
+        </div>
+    )
 }
 
 export default Event
