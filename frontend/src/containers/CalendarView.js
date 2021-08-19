@@ -9,47 +9,44 @@ import WelcomeSplash from '../components/WelcomeSplash'
 import Navbar from '../components/Navbar'
 
 
-class CalendarView extends Component {
+const CalendarView = ( props) => {
 
-    handleEventClick = (e) => {
-        this.props.history.push(`/events/${e.event.extendedProps.id}`)
-        this.props.updateEventId(e.event.extendedProps.id)
+    const handleEventClick = (e) => {
+        props.history.push(`/events/${e.event.extendedProps.id}`)
+        props.updateEventId(e.event.extendedProps.id)
         console.log("I clicked something")
     }
 
-    handleEventDrop = (e) => {
+    const handleEventDrop = (e) => {
         console.log("I moved something")
         console.log(e.event.extendedProps.id)
     }
 
 
-    render () {
+    return (
 
-        return (
+        <div>
 
-            <div>
+            <Navbar 
+                // updateModalShow={this.props.updateModalShow}
+                // nickname={this.props.nickname}
+            />
+            
+            <WelcomeSplash 
+                // nickname={this.state.nickname}
+            />
+            
+            <FullCalendar 
+                defaultView="dayGridMonth" 
+                plugins={[dayGridPlugin, interactionPlugin]}
+                editable={true}
+                events={props.previewEvents}
+                eventClick={handleEventClick}
+                eventDrop={handleEventDrop}
+            />        
 
-                <Navbar 
-                    // updateModalShow={this.props.updateModalShow}
-                    // nickname={this.props.nickname}
-                />
-                
-                <WelcomeSplash 
-                    // nickname={this.state.nickname}
-                />
-                
-                <FullCalendar 
-                    defaultView="dayGridMonth" 
-                    plugins={[dayGridPlugin, interactionPlugin]}
-                    editable={true}
-                    events={this.props.previewEvents}
-                    eventClick={this.handleEventClick}
-                    eventDrop={this.handleEventDrop}
-                />        
-
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default withRouter(CalendarView);
