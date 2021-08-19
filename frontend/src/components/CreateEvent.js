@@ -9,9 +9,7 @@ import Navbar from './Navbar'
 const EventsAPI = "http://localhost:3000/events/"
 const ThumbnailAPI = "http://localhost:3000/thumbnails/"
 
-export default function CreateEvent (props) {
-
-    console.log(props)
+export default function CreateEvent ({ profileId }) {
 
     const [startDateTime, setStartDateTime] = useState(null)
     const [endDateTime, setEndDateTime] = useState(null)
@@ -36,7 +34,7 @@ export default function CreateEvent (props) {
             description: e.target[1].value,
             start: concStartDateTime,
             end: concEndDateTime,
-            profile_id: 1                   // make dynamic after fixing state-props pass through
+            profile_id: profileId                  // make dynamic after fixing state-props pass through
         }
 
         // const postObjThumbnail = {
@@ -56,6 +54,7 @@ export default function CreateEvent (props) {
             .then(res => console.log(res))
             .then(console.log("posted new event object!"))
             .catch(() => alert("event post error!"))
+            // // implement redirect to Calendar
 
         // fetch(ThumbnailAPI, {
         //     method: "POST",

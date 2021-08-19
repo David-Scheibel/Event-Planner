@@ -6,7 +6,7 @@ import Modal from 'react-bootstrap/Modal'
 
 const EventAPI = "http://localhost:3000/events"
 
-export default function CreateEventModal(props) {
+export default function CreateEventModal (props) {
 
     return (
         <div>
