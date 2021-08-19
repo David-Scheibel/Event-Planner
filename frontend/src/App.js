@@ -11,6 +11,7 @@ import Signup from './components/Signup'
 import CreateEvent from "./components/CreateEvent"
 
 const ProfileAPI = "http://localhost:3000/profiles"
+const EventsAPI = "http://localhost:3000/events"
 
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
         filteredEvent: {},
 
         profileId: 0,            // sets state to current user's profile
-        eventId: 0,
+        eventId: 0,              // sets state to selected event id
         nickname: "",
         username: "",
 
@@ -57,7 +58,9 @@ class App extends Component {
         })
     }
 
-    updateEvents = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] })}
+    updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] })}
+
+    updateRemoveEvent = (e) => {this.setState({previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e.id)})}
 
     updateEventId = (e) => {this.setState({eventId: e})}
 
@@ -74,7 +77,7 @@ class App extends Component {
     }
 
     filterEvents = (e) => {this.setState({ filteredEvent: e})}
-
+   
 
     render () {
 
@@ -104,6 +107,8 @@ class App extends Component {
                 <Route path='/events/:id'>
                     <Event 
                         filterEvent={this.state.filteredEvent}
+                        // deleteEvent={this.deleteEvent}
+                        updateRemoveEvent={this.updateRemoveEvent}
                     />
                 </Route>
 
@@ -111,7 +116,7 @@ class App extends Component {
                     <CreateEvent
                         profileId={this.state.profileId}
                         nickname={this.state.nickname}
-                        updateEvents={this.updateEvents}
+                        updateEvents={this.updateAddEvent}
                     />
                 </Route>
 

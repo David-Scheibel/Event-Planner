@@ -3,13 +3,14 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import DateTimePicker from 'react-datetime-picker'
+import { withRouter } from 'react-router-dom';
 
 import Navbar from './Navbar'
 
 const EventsAPI = "http://localhost:3000/events/"
 const ThumbnailAPI = "http://localhost:3000/thumbnails/"
 
-export default function CreateEvent ({ profileId }) {
+const CreateEvent = ( props ) => {
 
     const [startDateTime, setStartDateTime] = useState(null)
     const [endDateTime, setEndDateTime] = useState(null)
@@ -34,7 +35,7 @@ export default function CreateEvent ({ profileId }) {
             description: e.target[1].value,
             start: concStartDateTime,
             end: concEndDateTime,
-            profile_id: profileId                  // make dynamic after fixing state-props pass through
+            profile_id: props.profileId
         }
 
         // const postObjThumbnail = {
@@ -51,10 +52,11 @@ export default function CreateEvent ({ profileId }) {
             body: JSON.stringify(postObjEvent)
         })
             .then(res => res.json())
-            // .then(newEvent => {this.props.updateEvents(newEvent)})
+            // .then(newEvent => {this.props.updateAddEvent(newEvent)})
             .then(res => console.log(res))
             .then(console.log("posted new event object!"))
             .catch(() => alert("event post error!"))
+            .then(props.history.push("/calendar"))
             // // implement redirect to Calendar
 
         // fetch(ThumbnailAPI, {
@@ -126,3 +128,5 @@ export default function CreateEvent ({ profileId }) {
         </div>
     )
 }
+
+export default withRouter(CreateEvent)

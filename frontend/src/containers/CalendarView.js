@@ -10,7 +10,7 @@ import WelcomeSplash from '../components/WelcomeSplash'
 import Navbar from '../components/Navbar'
 
 
-const CalendarView = ( props) => {
+const CalendarView = ( props ) => {
 
     const handleEventClick = (e) => {
         console.log(`I clicked on ${e.event.extendedProps.title}`)
