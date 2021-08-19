@@ -106,8 +106,7 @@ class App extends Component {
 
                 <Route path='/events/:id'>
                     <Event 
-                        filterEvent={this.state.filteredEvent}
-                        // deleteEvent={this.deleteEvent}
+                        event={this.state.filteredEvent}
                         updateRemoveEvent={this.updateRemoveEvent}
                     />
                 </Route>

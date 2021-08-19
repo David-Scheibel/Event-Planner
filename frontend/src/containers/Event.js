@@ -4,15 +4,14 @@ import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import EventCard from '../components/EventCard'
 
 
-const Event = ({ filterEvent, updateRemoveEvent }) => {
+const Event = ({ event, updateRemoveEvent }) => {
 
     return (
         <div>
-            <h3>{filterEvent == null ? " " : `It's time for a ${filterEvent.title}!`}</h3>
+            <h3>{event == null ? " " : `It's time for a ${event.title}!`}</h3>
 
             <EventCard 
-                event={filterEvent}
-                // deleteEvent={deleteEvent}
+                event={event}
                 updateRemoveEvent={updateRemoveEvent}
             />
 

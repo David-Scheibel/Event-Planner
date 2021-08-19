@@ -98,4 +98,4 @@ puts "creating categories..."
     Category.create(name: "River & Camping", event_id: Event.all.sample.id)
 
 puts "creating thumbnails..."
-    Thumbnails.create(image: "this_is_a_great_image", event_id: Eventla.all.sample.id)
+    Thumbnail.create(image: "this_is_a_great_image", event_id: Event.all.sample.id)

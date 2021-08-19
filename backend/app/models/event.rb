@@ -4,4 +4,5 @@ class Event < ApplicationRecord
   
   has_many :comments
   has_many :reminders
+  has_one :thumbnail
 end
