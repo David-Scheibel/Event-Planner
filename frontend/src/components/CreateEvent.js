@@ -52,11 +52,10 @@ const CreateEvent = ( props ) => {
             body: JSON.stringify(postObjEvent)
         })
             .then(res => res.json())
-            // .then(newEvent => {this.props.updateAddEvent(newEvent)})
-            .then(res => console.log(res))
+            .then(newEvent => {props.updateAddEvent(newEvent)})
             .then(console.log("posted new event object!"))
-            .catch(() => alert("event post error!"))
             .then(props.history.push("/calendar"))
+            // .catch(() => alert("event post error!"))
             // // implement redirect to Calendar
 
         // fetch(ThumbnailAPI, {

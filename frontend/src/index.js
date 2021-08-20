@@ -6,10 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-datepicker/dist/react-datepicker.css'
 import 'react-datetime-picker/dist/entry.nostyle'
+import { DayGridView } from '@fullcalendar/daygrid';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App 
+      // view="dayGridMonth" 
+    />
   </React.StrictMode>,
   document.getElementById('root')
 );
