@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
 import Navbar from './Navbar'
 
 const EventsAPI = "http://localhost:3000/events/"
-const ThumbnailAPI = "http://localhost:3000/thumbnails/"
+
 
 const CreateEvent = ( props ) => {
 
@@ -38,11 +38,6 @@ const CreateEvent = ( props ) => {
             profile_id: props.profileId
         }
 
-        // const postObjThumbnail = {
-        //     image: e.target[2].value,
-        //     event_id: 1
-        // }
-
         fetch(EventsAPI, {
             method: "POST",
             headers: {
@@ -53,22 +48,10 @@ const CreateEvent = ( props ) => {
         })
             .then(res => res.json())
             .then(newEvent => {props.updateAddEvent(newEvent)})
-            .then(console.log("posted new event object!"))
+            .then(props.isUpdate())
+            .then(console.log("Posted new event object!"))
             .then(props.history.push("/calendar"))
-            // .catch(() => alert("event post error!"))
-            // // implement redirect to Calendar
-
-        // fetch(ThumbnailAPI, {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         'Accept': 'application/json'
-        //     },
-        //     body: JSON.stringify(postObjThumbnail)
-        // })
-        //     .then(res => res.json())
-        //     .then(res => console.log(res))
-        //     .catch(() => alert("thumbnail post error!"))
+            .catch(() => alert("event post error!"))
     }
 
 

@@ -66,23 +66,13 @@ class App extends Component {
     }
 
     reFormatEvents() {
-
-        let reFormat = this.state.previewEvents
-
-        return reFormat.map(appointment => {
-            const {id, title, start, end} = appointment
-
-            let startTime = new Date(start)
-            let endTime = new Date(end)
-
-            return {
-                id, 
-                title, 
-                start: startTime,
-                end: endTime, 
-                extendedProps: {...appointment}
-            }
-        })
+        fetch(ProfileAPI)
+            .then(r => r.json())
+            // .then(r => console.log(r[0].events))
+            .then(r => this.setState({
+                previewEvents: this.formatEvents(r[0].events)
+        }))
+            .then(console.log("reFormatEvents"))
     }
 
     // componentDidUpdate(prevProps) {
@@ -152,7 +142,7 @@ class App extends Component {
                         filterEvents={this.filterEvents}
                         updateModalShow={this.updateModalShow}
                         updateEventId={this.updateEventId}
-                        // isUpdate={this.isUpdate}
+                        isUpdate={this.state.isUpdate}
                         // calendarRef={this.calendarRef}
                         // view={view}
                         view="dayGridMonth"
@@ -163,7 +153,8 @@ class App extends Component {
                     <Event 
                         event={this.state.filteredEvent}
                         updateRemoveEvent={this.updateRemoveEvent}
-                        // isUpdat={this.isUpdate}
+                        isUpdate={this.isUpdate}
+                        reFormatEvents={this.reFormatEvents}
                     />
                 </Route>
 
@@ -172,7 +163,7 @@ class App extends Component {
                         profileId={this.state.profileId}
                         nickname={this.state.nickname}
                         updateAddEvent={this.updateAddEvent}
-                        // isUpdate={this.isUpdate}
+                        isUpdate={this.isUpdate}
                     />
                 </Route>
 

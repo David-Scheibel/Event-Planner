@@ -11,6 +11,7 @@ const EventCard = ( props ) => {
             .then(res => res.json())
             .then(() => { props.updateRemoveEvent(id) })
             .then(props.history.push("/calendar"))
+        props.reFormatEvents()
     }  
 
     return (

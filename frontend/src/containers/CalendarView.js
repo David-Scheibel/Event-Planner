@@ -81,7 +81,7 @@ const CalendarView = ( props ) => {
             .then(res => res.json())
             .then(data => console.log(data))
 
-        console.log(`I moved ${title} to ${concStartDateTime} - ${concEndDateTime}`)
+        console.log(`Moved ${title} to ${concStartDateTime} - ${concEndDateTime}`)
     }
 
 
@@ -106,6 +106,7 @@ const CalendarView = ( props ) => {
                 events={props.previewEvents}
                 eventClick={handleEventClick}
                 eventDrop={handleEventDrop}
+                isUpdate={props.isUpdate}
             />   
 
         </div>
