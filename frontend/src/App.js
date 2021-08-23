@@ -11,19 +11,19 @@ import Signup from './components/Signup'
 import CreateEvent from "./components/CreateEvent"
 
 const ProfileAPI = "http://localhost:3000/profiles"
-const EventsAPI = "http://localhost:3000/events"
 
 
 class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.calendarRef = createRef();
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.calendarRef = createRef();
+    // }
 
     state = {
         previewEvents: {},
         filteredEvent: {},
+        profileObj: {},
 
         profileId: 0,            // sets state to current user's profile
         eventId: 0,              // sets state to selected event id
@@ -35,8 +35,7 @@ class App extends Component {
     }
 
 
-
-    componentDidMount() {           // make dynamic with auth
+    componentDidMount() {        // make dynamic with auth
         fetch(ProfileAPI)
             .then(r => r.json())
             .then(r => this.setState({
@@ -50,6 +49,26 @@ class App extends Component {
     formatEvents(r) {
 
         return r.map(appointment => {
+            const {id, title, start, end} = appointment
+
+            let startTime = new Date(start)
+            let endTime = new Date(end)
+
+            return {
+                id, 
+                title, 
+                start: startTime,
+                end: endTime, 
+                extendedProps: {...appointment}
+            }
+        })
+    }
+
+    reFormatEvents() {
+
+        let reFormat = this.state.previewEvents
+
+        return reFormat.map(appointment => {
             const {id, title, start, end} = appointment
 
             let startTime = new Date(start)
@@ -91,6 +110,7 @@ class App extends Component {
 
     updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] }, () => {
         this.formatEvents([...this.state.previewEvents, e])
+        // debugger
     })}
 
     updateRemoveEvent = (e) => {this.setState({ previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e )})}

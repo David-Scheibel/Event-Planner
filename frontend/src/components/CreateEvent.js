@@ -30,7 +30,7 @@ const CreateEvent = ( props ) => {
         let concEndDateTime = `${parseEndDate} ${parseEndTime}`
 
 
-        const postObjEvent = {
+        const postEvent = {
             title: e.target[0].value,
             description: e.target[1].value,
             start: concStartDateTime,
@@ -49,7 +49,7 @@ const CreateEvent = ( props ) => {
                 "Content-Type": "application/json",
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(postObjEvent)
+            body: JSON.stringify(postEvent)
         })
             .then(res => res.json())
             .then(newEvent => {props.updateAddEvent(newEvent)})
