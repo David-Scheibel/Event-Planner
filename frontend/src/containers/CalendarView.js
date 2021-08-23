@@ -16,6 +16,7 @@ const CalendarView = ( props ) => {
     const {view, ...others} = props;
     const calendarRef = useRef();
 
+    console.log(calendarRef.current)
     // useEffect(() => {
     //     changeView(view);
     //     // console.log(view)
