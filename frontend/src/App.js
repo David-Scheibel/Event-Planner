@@ -32,6 +32,7 @@ class App extends Component {
 
         modalShow: false,
         isUpdate: false,
+        testView: "dayGridMonth",
         date: ""                 // maybe need current date
     }
 
@@ -99,9 +100,10 @@ class App extends Component {
     //     return calendarDom ? calendarDom.getApi() : null;
     // };
 
-    updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e] }, () => {
+    updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e], isUpdate: true, testView: "dayGridWeek" }, () => {
         this.formatEvents([...this.state.previewEvents, e])
-        // debugger
+        this.setState({ isUpdate: false })
+        this.setState({ testView: "dayGridMonth"})
     })}
 
     updateRemoveEvent = (e) => {this.setState({ previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e )})}
@@ -113,11 +115,9 @@ class App extends Component {
         console.log("updateModalShow was clicked")
     }
 
-    filterEvents = (e) => {this.setState({ filteredEvent: e})}
+    filterEvents = (e) => {this.setState({ filteredEvent: e })}
 
-    isUpdate = () => {
-        this.setState({ isUpdate: !this.state.isUpdate})
-    }
+    isUpdate = () => {this.setState({ isUpdate: !this.state.isUpdate })}
    
 
     render () {
@@ -143,6 +143,7 @@ class App extends Component {
                         updateModalShow={this.updateModalShow}
                         updateEventId={this.updateEventId}
                         isUpdate={this.state.isUpdate}
+                        testView={this.state.testView}
                         // calendarRef={this.calendarRef}
                         // view={view}
                         view="dayGridMonth"

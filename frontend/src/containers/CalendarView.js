@@ -16,23 +16,23 @@ const CalendarView = ( props ) => {
     const {view, ...others} = props;
     const calendarRef = useRef();
 
-    useEffect(() => {
-        changeView(view);
-        // console.log(view)
-    }, [view]);
+    // useEffect(() => {
+    //     changeView(view);
+    //     // console.log(view)
+    // }, [view]);
 
 
-    const changeView = view => {
-        const API = getApi();
+    // const changeView = view => {
+    //     const API = getApi();
 
-        API && API.changeView(view);
-    }
+    //     API && API.changeView(view);
+    // }
 
-    const getApi = () => {
-        const { current: calendarDom } = calendarRef;
+    // const getApi = () => {
+    //     const { current: calendarDom } = calendarRef;
 
-        return calendarDom ? calendarDom.getApi() : null;
-    }
+    //     return calendarDom ? calendarDom.getApi() : null;
+    // }
 
     const handleEventClick = (e) => {
         console.log(`I clicked on ${e.event.extendedProps.title}`)
@@ -102,12 +102,12 @@ const CalendarView = ( props ) => {
                 plugins={[dayGridPlugin, interactionPlugin]}
                 editable={true}
                 ref={calendarRef}
-                defaultView={view}
+                defaultView={props.testView}
                 events={props.previewEvents}
                 eventClick={handleEventClick}
                 eventDrop={handleEventDrop}
-                isUpdate={props.isUpdate}
-            />   
+                // isUpdate={props.isUpdate}
+            />  
 
         </div>
     )
