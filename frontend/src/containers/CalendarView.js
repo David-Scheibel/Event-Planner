@@ -16,7 +16,8 @@ const CalendarView = ( props ) => {
     const {view, ...others} = props;
     const calendarRef = useRef();
 
-    console.log(calendarRef.current)
+    // console.log(calendarRef.current)
+    
     // useEffect(() => {
     //     changeView(view);
     //     // console.log(view)
@@ -80,7 +81,7 @@ const CalendarView = ( props ) => {
             body: JSON.stringify(updateEvent)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(eventUpdate => props.updateEvent(eventUpdate))
 
         console.log(`Moved ${title} to ${concStartDateTime} - ${concEndDateTime}`)
     }

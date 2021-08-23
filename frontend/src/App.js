@@ -22,6 +22,7 @@ class App extends Component {
 
     state = {
         previewEvents: {},
+        profileEvents: {},      // jerry rigged to give a second previewEvents for Profile view
         filteredEvent: {},
         profileObj: {},
 
@@ -108,7 +109,33 @@ class App extends Component {
 
     updateRemoveEvent = (e) => {this.setState({ previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e )})}
 
-    updateEventId = (e) => {this.setState({ eventId: e })}
+    updateEvent = (e) => {       // doesn't work due to API nonsense, FIX
+        // console.log(e)
+
+        const updateObj = {
+            id: e.id,
+            title: e.title,
+            start: e.start,
+            end: e.end,
+            extendedProps: {
+                profile_id: e.profile_id,
+                comments: e.comments,
+                thumbnail: e.thumbnail,
+                reminders: e.reminders
+            }
+        }
+
+        // console.log(updateObj)
+
+        const eventCopy = [...this.state.previewEvents]
+        const eventRemove = eventCopy.filter(events => events.id !== e.id )
+        const eventReplace = [...eventRemove, updateObj]
+
+        // console.log(eventReplace)
+        // this.setState({ previewEvents: [...eventReplace] })      // uncomment for function to updateDOM
+    }
+
+    updateEventId = (e) => {this.setState({ eventId: e })}   // collapse into updateEvent
 
     updateModalShow = (bool) => {
         this.setState({modalShow: bool})
@@ -123,6 +150,8 @@ class App extends Component {
     render () {
 
         // const { view, ...others } = this.props
+
+        console.log(this.state.previewEvents)
 
         return (
         <BrowserRouter>
@@ -141,6 +170,7 @@ class App extends Component {
                         modalShow={this.state.modalShow}
                         filterEvents={this.filterEvents}
                         updateModalShow={this.updateModalShow}
+                        updateEvent={this.updateEvent}
                         updateEventId={this.updateEventId}
                         isUpdate={this.state.isUpdate}
                         testView={this.state.testView}
