@@ -31,6 +31,7 @@ class App extends Component {
         username: "",
 
         modalShow: false,
+        isUpdate: false,
         date: ""                 // maybe need current date
     }
 
@@ -122,17 +123,10 @@ class App extends Component {
         console.log("updateModalShow was clicked")
     }
 
-    handleEventDrop = (e) => {
-        console.log("I moved something")
-        console.log(e)
-        console.log(e.event.extendedProps.title)
-        console.log(e.event.extendedProps.id)
-    }
-
     filterEvents = (e) => {this.setState({ filteredEvent: e})}
 
-    trigger = (e) => {
-        console.log(e)
+    isUpdate = () => {
+        this.setState({ isUpdate: !this.state.isUpdate})
     }
    
 
@@ -153,12 +147,12 @@ class App extends Component {
                     <CalendarView 
                         previewEvents={this.state.previewEvents}
                         nickname={this.state.nickname}
-                        modalShow={this.state.modalShow}
                         profileId={this.state.profileId}
-                        updateModalShow={this.updateModalShow}
-                        handleEventDrop={this.handleEventDrop}
-                        updateEventId={this.updateEventId}
+                        modalShow={this.state.modalShow}
                         filterEvents={this.filterEvents}
+                        updateModalShow={this.updateModalShow}
+                        updateEventId={this.updateEventId}
+                        // isUpdate={this.isUpdate}
                         // calendarRef={this.calendarRef}
                         // view={view}
                         view="dayGridMonth"
@@ -169,6 +163,7 @@ class App extends Component {
                     <Event 
                         event={this.state.filteredEvent}
                         updateRemoveEvent={this.updateRemoveEvent}
+                        // isUpdat={this.isUpdate}
                     />
                 </Route>
 
@@ -177,6 +172,7 @@ class App extends Component {
                         profileId={this.state.profileId}
                         nickname={this.state.nickname}
                         updateAddEvent={this.updateAddEvent}
+                        // isUpdate={this.isUpdate}
                     />
                 </Route>
 
