@@ -21,11 +21,12 @@ const LogIn = ({  }) => {
             })
         })
         .then(res => res.json())
+        // .then(r => console.log(r))       // it's not even console logging
         .then(userInfo => {
             setValid(userInfo)
             localStorage.token = userInfo.token
             localStorage.userID = userInfo.user_id
-            console.log(userInfo)
+            // console.log(userInfo)
         })
     } 
 

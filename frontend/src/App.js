@@ -22,7 +22,7 @@ class App extends Component {
 
     state = {
         previewEvents: {},
-        profileEvents: {},      // jerry rigged to give a second previewEvents for Profile view
+        profileEvents: {},      // jerry rigged to give a second previewEvents for Profile view, can refine
         filteredEvent: {},
         profileObj: {},
 
@@ -73,7 +73,7 @@ class App extends Component {
             // .then(r => console.log(r[0].events))
             .then(r => this.setState({
                 previewEvents: this.formatEvents(r[0].events)
-        }))
+            }))
             .then(console.log("reFormatEvents"))
     }
 
@@ -101,13 +101,22 @@ class App extends Component {
     //     return calendarDom ? calendarDom.getApi() : null;
     // };
 
-    updateAddEvent = (e) => {this.setState({ previewEvents: [...this.state.previewEvents, e], isUpdate: true, testView: "dayGridWeek" }, () => {
-        this.formatEvents([...this.state.previewEvents, e])
-        this.setState({ isUpdate: false })
-        this.setState({ testView: "dayGridMonth"})
-    })}
+    updateAddEvent = (e) => {
+        this.setState({ 
+            previewEvents: [...this.state.previewEvents, e], 
+            isUpdate: true, 
+            testView: "dayGridWeek" }, () => {
+                this.formatEvents([...this.state.previewEvents, e])
+                this.setState({ isUpdate: false })
+                this.setState({ testView: "dayGridMonth"})
+            })
+    }
 
-    updateRemoveEvent = (e) => {this.setState({ previewEvents: this.state.previewEvents.filter(previewEvents => previewEvents.id !== e )})}
+    updateRemoveEvent = (e) => {
+        this.setState({ 
+            previewEvents: this.state.previewEvents.filter( previewEvents => previewEvents.id !== e )
+        })
+    }
 
     updateEvent = (e) => {       // doesn't work due to API nonsense, FIX
         // console.log(e)
@@ -121,7 +130,8 @@ class App extends Component {
                 profile_id: e.profile_id,
                 comments: e.comments,
                 thumbnail: e.thumbnail,
-                reminders: e.reminders
+                reminders: e.reminders,
+                categories: e.categories
             }
         }
 
@@ -135,7 +145,7 @@ class App extends Component {
         // this.setState({ previewEvents: [...eventReplace] })      // uncomment for function to updateDOM
     }
 
-    updateEventId = (e) => {this.setState({ eventId: e })}   // collapse into updateEvent
+    updateEventId = (e) => {this.setState({ eventId: e })}          // collapse function into updateEvent
 
     updateModalShow = (bool) => {
         this.setState({modalShow: bool})
