@@ -5,7 +5,7 @@ import EventCard from '../components/EventCard'
 import Navbar from "../components/Navbar"
 
 
-const Event = ({ event, updateRemoveEvent }) => {
+const Event = ({ event, stateRemoveEvent }) => {
 
     return (
         <div>
@@ -16,7 +16,7 @@ const Event = ({ event, updateRemoveEvent }) => {
 
             <EventCard 
                 event={event}
-                updateRemoveEvent={updateRemoveEvent}
+                stateRemoveEvent={stateRemoveEvent}
             />
 
         </div>

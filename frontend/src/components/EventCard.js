@@ -9,7 +9,7 @@ const EventCard = ( props ) => {
             body: null
         })
             .then(res => res.json())
-            .then(() => { props.updateRemoveEvent(id) })
+            .then(() => { props.stateRemoveEvent(id) })
             .then(props.history.push("/calendar"))
     }  
 

@@ -81,7 +81,7 @@ const CalendarView = ( props ) => {
             body: JSON.stringify(updateEvent)
         })
             .then(res => res.json())
-            .then(eventUpdate => props.updateEvent(eventUpdate))
+            .then(eventUpdate => props.stateUpdateEvent(eventUpdate))
 
         console.log(`Moved ${title} to ${concStartDateTime} - ${concEndDateTime}`)
     }

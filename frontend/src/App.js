@@ -101,7 +101,7 @@ class App extends Component {
     //     return calendarDom ? calendarDom.getApi() : null;
     // };
 
-    updateAddEvent = (e) => {
+    stateAddEvent = (e) => {
         this.setState({ 
             previewEvents: [...this.state.previewEvents, e], 
             isUpdate: true, 
@@ -112,13 +112,13 @@ class App extends Component {
             })
     }
 
-    updateRemoveEvent = (e) => {
+    stateRemoveEvent = (e) => {
         this.setState({ 
             previewEvents: this.state.previewEvents.filter( previewEvents => previewEvents.id !== e )
         })
     }
 
-    updateEvent = (e) => {       // doesn't work due to API nonsense, FIX
+    stateUpdateEvent = (e) => {           // drag/drop: doesn't work due to API nonsense, FIX
         // console.log(e)
 
         const updateObj = {
@@ -180,7 +180,7 @@ class App extends Component {
                         modalShow={this.state.modalShow}
                         filterEvents={this.filterEvents}
                         updateModalShow={this.updateModalShow}
-                        updateEvent={this.updateEvent}
+                        stateUpdateEvent={this.stateUpdateEvent}
                         updateEventId={this.updateEventId}
                         isUpdate={this.state.isUpdate}
                         testView={this.state.testView}
@@ -193,7 +193,7 @@ class App extends Component {
                 <Route path='/events/:id'>
                     <Event 
                         event={this.state.filteredEvent}
-                        updateRemoveEvent={this.updateRemoveEvent}
+                        stateRemoveEvent={this.stateRemoveEvent}
                         isUpdate={this.isUpdate}
                         reFormatEvents={this.reFormatEvents}
                     />
@@ -203,7 +203,7 @@ class App extends Component {
                     <CreateEvent
                         profileId={this.state.profileId}
                         nickname={this.state.nickname}
-                        updateAddEvent={this.updateAddEvent}
+                        stateAddEvent={this.stateAddEvent}
                         isUpdate={this.isUpdate}
                     />
                 </Route>

@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 
-class WelcomeSplash extends Component {
+const WelcomeSplash = ( props ) => {
 
-    render () {
-
-        const nick = this.props.nickname
+        const nick = props.nickname
         
         return (
             <div>
@@ -13,7 +10,6 @@ class WelcomeSplash extends Component {
                 <h3>{nick == null ? " " : `Welcome to your planner, ${nick}!`}</h3>
             </div>
         )
-    }
 }
 
 export default WelcomeSplash

@@ -47,7 +47,7 @@ const CreateEvent = ( props ) => {
             body: JSON.stringify(postEvent)
         })
             .then(res => res.json())
-            .then(newEvent => {props.updateAddEvent(newEvent)})
+            .then(newEvent => {props.stateAddEvent(newEvent)})
             .then(props.isUpdate())
             .then(console.log("Posted new event object!"))
             .then(props.history.push("/calendar"))
