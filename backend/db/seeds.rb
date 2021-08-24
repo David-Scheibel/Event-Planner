@@ -15,6 +15,8 @@ puts "destroying all events ..."
 Event.destroy_all
 puts "destroying all categories ..."
 Category.destroy_all
+puts "destroying all thumbnails ..."
+Thumbnail.destroy_all
 
 # resets id info of seed data to 1
 puts "resetting all users ..."
@@ -25,6 +27,8 @@ puts "resetting all events ..."
 Event.reset_pk_sequence
 puts "resetting all categories ..."
 Category.reset_pk_sequence
+puts "resetting all thumbnails ..."
+Thumbnail.reset_pk_sequence
 
 # creates seed data
 puts "creating users..."
@@ -36,6 +40,11 @@ puts "creating profiles..."
     Profile.create(user_id: User.second.id, nickname:"MadDog")
 
 puts "creating events..."
+    Event.create(title: "Test date reverse", 
+                 start: "2021-08-3 4:00 PM", 
+                 end: "", 
+                 description: "Very good, yes.", 
+                 profile_id: Profile.first.id)
     Event.create(title: "Bar Crawl", 
                  start: "8/6/21 4:00 PM", 
                  end: "8-8-21, 12:00", 
@@ -98,4 +107,5 @@ puts "creating categories..."
     Category.create(name: "River & Camping", event_id: Event.all.sample.id)
 
 puts "creating thumbnails..."
-    Thumbnail.create(image: "this_is_a_great_image", event_id: Event.all.sample.id)
+    # Thumbnail.create(image: "this_is_a_great_image", event_id: Event.all.sample.id)
+    Thumbnail.create(image: "https://cdn.sanity.io/images/0vv8moc6/hcplive/c6a1bdd525a3983c7e0503b6cd7da08fb02b7980-483x288.jpg", event_id: 3)

@@ -155,6 +155,26 @@ class App extends Component {
     filterEvents = (e) => {this.setState({ filteredEvent: e })}
 
     isUpdate = () => {this.setState({ isUpdate: !this.state.isUpdate })}
+
+    handleDateSelect = (selectInfo) => {
+
+        console.log(`I clicked on ${selectInfo.startStr}`)
+
+        // let title = prompt('Please enter a new title for your event')
+        // let calendarApi = selectInfo.view.calendar
+    
+        // calendarApi.unselect() // clear date selection
+    
+        // if (title) {
+        //     calendarApi.addEvent({
+        //         id: 0,
+        //         title,
+        //         start: selectInfo.startStr,
+        //         end: selectInfo.endStr,
+        //         allDay: selectInfo.allDay
+        //     })
+        // }
+    }
    
 
     render () {
@@ -181,6 +201,7 @@ class App extends Component {
                         filterEvents={this.filterEvents}
                         updateModalShow={this.updateModalShow}
                         stateUpdateEvent={this.stateUpdateEvent}
+                        handleDateSelect={this.handleDateSelect}
                         updateEventId={this.updateEventId}
                         isUpdate={this.state.isUpdate}
                         testView={this.state.testView}

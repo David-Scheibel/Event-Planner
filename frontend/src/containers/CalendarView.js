@@ -103,13 +103,15 @@ const CalendarView = ( props ) => {
             <FullCalendar 
                 plugins={[dayGridPlugin, interactionPlugin]}
                 editable={true}
+                selectable={true}
                 ref={calendarRef}
                 defaultView={props.testView}
                 events={props.previewEvents}
                 eventClick={handleEventClick}
                 eventDrop={handleEventDrop}
+                select={props.handleDateSelect}
                 // isUpdate={props.isUpdate}
-            />  
+            />
 
         </div>
     )
