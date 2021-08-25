@@ -1,10 +1,17 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  /* text-align: content; */
+  background-repeat:no-repeat;
+  /* background-image: linear-gradient(to right, #1F2833 40%, #66FCF1 50%, #1F2833 80%); */
+  background: rgb(31,40,51);
+  background: radial-gradient(circle, rgba(31,40,51,1) 28%, rgba(38,59,68,1) 72%);
+  height: 100%
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSds2Hx6y8hSYL3malAiwnelCEFnDcN4sgVzg&usqp=CAU");
 }
 
 .App-header {
@@ -18,8 +25,14 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login {
+  text-align: center;
+  color: white;
+}
+
+.signup {
+  text-align: center;
+  color: white;
 }
 
 .card {
@@ -27,4 +40,80 @@
   max-width: 50rem;
   min-height: 4rem;
   max-height: 80rem;
+}
+
+/* THEME COLORS 
+#0B0C10 - black 
+#1F2833 - dark gray 
+#C5C6C7 - gray 
+#66FCF1 = neon green  
+#45A29E - sea green */
+.navbar{
+  /* background-color: #0B0C10; */
+  background-image: linear-gradient(to right, #1F2833 40%, #66FCF1 50%, #1F2833 80%);
+  height: 55px;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  padding-top: 20px
+}
+.navbar_planner{
+  text-decoration: none;
+  margin-left: 5%;
+  color: #66FCF1;
+  border-color: white;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 3px;
+  padding: 10px;
+}
+.navbar_event{
+  text-decoration: none;
+  margin-left: -30%;
+  color: #66FCF1;
+  border-color: white;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 3px;
+  padding: 10px;
+}
+.navbar_profile{
+  text-decoration: none;
+  margin-left: -30%;
+  color: #66FCF1;
+  border-color: white;
+  border-radius: 18px;
+  border-style: solid;
+  border-width: 3px;
+  padding: 10px;
+}
+.navbar_search{
+  margin-left: -40%;
+  border-radius: 10px;
+}
+.welcome{
+  color: white;
+  text-align: content;
+  font-size: 25px;
+  font-weight: 600;
+  height: 35px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 70px;
+  align-content: center;
+  text-align: center;
+  display: inline-block;
+  position: relative; 
+}
+.calendar{
+  height: 40%;
+  width: 60%;
+  margin-left: 15%;
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.calendar_view{
 }

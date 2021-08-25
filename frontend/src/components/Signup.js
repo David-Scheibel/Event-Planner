@@ -30,7 +30,7 @@ const SignUp = () => {
 
     return(
 
-        <div style={{height: '100vh', paddingTop: '5%'}}>
+        <div className="signup" style={{height: '100vh', paddingTop: '5%'}}>
             {Object.keys(valid).length > 1 ? <Redirect to='/' /> : console.log('login didnt work')}
             <h2 className="" style={{paddingBottom: "5%", fontSize: '4em'}}>Signup</h2>
             <div className=''>

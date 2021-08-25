@@ -2,6 +2,7 @@ import { Redirect, Link } from "react-router-dom"
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import AccessAlarm from '@material-ui/icons/Alarm'
  
 const LogIn = ( props ) => {
 
@@ -33,9 +34,11 @@ const LogIn = ( props ) => {
     } 
 
     return(
-        <div style={{height: '100vh', paddingTop: '5%'}}>
+        <div className="login" style={{height: '100vh', paddingTop: '5%'}}>
         
+            <AccessAlarm width="100px"/>
             <h2 className="" style={{paddingBottom: "5%", fontSize: '4em'}}>RemindMe</h2>
+
             { Object.keys(valid).length > 1 ? <Redirect to='/calendar' /> : console.log('login didnt work') }
             <div className=''>
                 <Form onSubmit={(e) =>  logIn(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto'}}>

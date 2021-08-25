@@ -34,22 +34,23 @@ export default function Navbar ({ logout }) {
     </AppBar>
 
     // <nav className="navbar navbar-light bg-info mb-4">
-    //   <Link to="/calendar" onClick={ null }>
+
+    //   <Link className="navbar_planner" to="/calendar" onClick={ null }>
     //     <span className="navbar-brand">Planner</span>
     //   </Link>
       
-    //   <Link to="/form" onClick={ null }>
+    //   <Link className="navbar_event" to="/form" onClick={ null }>
     //     <span className="navbar-form">Create Event</span>
     //   </Link>
 
-    //   <Link to="/profile" onClick={ null }>
+    //   <Link className="navbar_profile" to="/profile" onClick={ null }>
     //     <span className="navbar-cart">Profile</span>
     //   </Link>
 
     //   <span>
     //     <input
     //       placeholder="search..."  
-    //       className="search"
+    //       className="navbar_search"
     //       onChange={ null }
     //     ></input>
     //   </span>

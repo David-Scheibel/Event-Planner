@@ -91,28 +91,36 @@ const CalendarView = ( props ) => {
 
         <div>
 
-            <Navbar 
-                updateModalShow={props.updateModalShow}
-                nickname={props.nickname}
-                logout={props.logout}
-            />
+            <p className="navbar">
+                <Navbar 
+                    updateModalShow={props.updateModalShow}
+                    nickname={props.nickname}
+                    logout={props.logout}
+                />
+            </p>
             
-            <WelcomeSplash 
-                nickname={props.nickname}
-            />
+            <p classname="calendar_view">
+                <p className="welcome">
+                    <WelcomeSplash 
+                        nickname={props.nickname}
+                    />
+                </p>
 
-            <FullCalendar 
-                plugins={[dayGridPlugin, interactionPlugin]}
-                editable={true}
-                selectable={true}
-                ref={calendarRef}
-                defaultView={props.testView}
-                events={props.previewEvents}
-                eventClick={handleEventClick}
-                eventDrop={handleEventDrop}
-                select={props.handleDateSelect}
-                // isUpdate={props.isUpdate}
-            />
+                <p className="calendar">
+                    <FullCalendar 
+                        plugins={[dayGridPlugin, interactionPlugin]}
+                        editable={true}
+                        selectable={true}
+                        ref={calendarRef}
+                        defaultView={props.testView}
+                        events={props.previewEvents}
+                        eventClick={handleEventClick}
+                        eventDrop={handleEventDrop}
+                        select={props.handleDateSelect}
+                        // isUpdate={props.isUpdate}
+                    />
+                </p>
+            </p>
 
         </div>
     )
