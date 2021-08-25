@@ -26,7 +26,7 @@ class App extends Component {
         filteredEvent: {},
         profileObj: {},
 
-        profileId: 0,            // sets state to current user's profile
+        profileId: 1,            // sets state to current user's profile
         eventId: 0,              // sets state to selected event id
         nickname: "",
         username: "",
@@ -39,13 +39,15 @@ class App extends Component {
 
 
     componentDidMount() {        // make dynamic with auth
+        let profileID = localStorage.userID-1
+
         fetch(ProfileAPI)
             .then(r => r.json())
             .then(r => this.setState({
-                profileId: r[0].id,
-                nickname: r[0] == null ? "null" : r[0].nickname,
-                username: r[0] == null ? "null" : r[0].user.username,
-                previewEvents: this.formatEvents(r[0].events)
+                profileId: r[profileID].id,
+                nickname: r[profileID] == null ? "null" : r[profileID].nickname,
+                username: r[profileID] == null ? "null" : r[profileID].user.username,
+                previewEvents: this.formatEvents(r[profileID].events)
         }))
     }
 
@@ -175,6 +177,19 @@ class App extends Component {
         //     })
         // }
     }
+
+    logout = () => {
+        this.setState({
+            previewEvents: {},
+            profileEvents: {},
+            filteredEvent: {},
+            profileObj: {},
+    
+            profileId: 0,
+            eventId: 0
+        })
+        localStorage.clear();
+    }
    
 
     render () {
@@ -208,6 +223,7 @@ class App extends Component {
                         // calendarRef={this.calendarRef}
                         // view={view}
                         view="dayGridMonth"
+                        logout={this.logout}
                     />
                 </Route>
 
@@ -217,6 +233,7 @@ class App extends Component {
                         stateRemoveEvent={this.stateRemoveEvent}
                         isUpdate={this.isUpdate}
                         reFormatEvents={this.reFormatEvents}
+                        logout={this.logout}
                     />
                 </Route>
 
@@ -226,12 +243,14 @@ class App extends Component {
                         nickname={this.state.nickname}
                         stateAddEvent={this.stateAddEvent}
                         isUpdate={this.isUpdate}
+                        logout={this.logout}
                     />
                 </Route>
 
                 <Route path='/profile'>
                     <Profile 
                         profileId={this.state.profileId}
+                        logout={this.logout}
                     />
                 </Route>
 

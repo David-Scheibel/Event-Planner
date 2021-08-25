@@ -10,23 +10,25 @@ const LogIn = ({  }) => {
     let logIn = (e) => {
         e.preventDefault()
 
+        const loginObj = {
+            email: e.target[0].value,
+            password: e.target[1].value
+        }
+
         fetch("http://localhost:3000/login/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                email: e.target[0].value,
-                password: e.target[1].value
-            })
+            body: JSON.stringify(loginObj)
         })
         .then(res => res.json())
         // .then(r => console.log(r))       // it's not even console logging
         .then(userInfo => {
             setValid(userInfo)
             localStorage.token = userInfo.token
-            localStorage.userID = userInfo.user_id
-            // console.log(userInfo)
+            localStorage.userID = userInfo.user
+            console.log(userInfo)
         })
     } 
 

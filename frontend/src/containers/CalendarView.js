@@ -94,6 +94,7 @@ const CalendarView = ( props ) => {
             <Navbar 
                 updateModalShow={props.updateModalShow}
                 nickname={props.nickname}
+                logout={props.logout}
             />
             
             <WelcomeSplash 

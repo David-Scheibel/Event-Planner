@@ -1,5 +1,8 @@
-import { withRouter } from 'react-router-dom';
+import { useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
+
+import CreateThumbnailModal from './CreateThumbnailModal'
 
 const ThumbnailsAPI = "http://localhost:3000/thumbnails/"
 
@@ -17,55 +20,39 @@ const EventCard = ( props ) => {
             .then(props.history.push("/calendar"))
     }  
 
-    const createThumbnail = (e) => {
-
-        const postThumb = {
-            image: "",
-            event_id: 0
-        }
-
-        fetch(ThumbnailsAPI, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(postThumb)
-        })
-            .then(res => res.json())
-            .then(res => console.log(res))
-            .catch(() => alert("thumbnail post error!"))
-    }
-
     // console.log(props.event)
 
     return (
 
-        <Card style={{ width: '25rem' }}>
-            { props.event.thumbnail == null ? 
-                <Button >Upload Image</Button> : 
-                <Card.Img variant="top" src= { props.event.thumbnail.image }/> 
-            }
-            <Card.Body>
-                <Card.Title> { props.event.title } </Card.Title>
-                <Card.Text> { props.event.description } </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-                <ListGroupItem>Start: { props.event.start } </ListGroupItem>
-                <ListGroupItem>End: { props.event.end } </ListGroupItem>
-                { props.event.reminders >0 ? <ListGroupItem>Reminders: { props.event.reminders.count } </ListGroupItem> : "Reminders: None" }
-            </ListGroup>
-            <Card.Body>
-                <Button 
-                    variant="primary" 
-                    onClick={ () => deleteEvent(props.event.id) }
-                    >Delete
-                </Button>
-                <Button variant="primary">Comment</Button>
-                {/* <Card.Link href="#">Delete</Card.Link>
-                <Card.Link href="#">Comment</Card.Link> */}
-            </Card.Body>
-        </Card>
+        <div>
+            <Card style={{ width: '25rem' }}>
+                { props.event.thumbnail == null ? 
+                    <Button >Upload Image</Button> : 
+                    <Card.Img variant="top" src= { props.event.thumbnail.image }/> 
+                }
+                <Card.Body>
+                    <Card.Title> { props.event.title } </Card.Title>
+                    <Card.Text> { props.event.description } </Card.Text>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                    <ListGroupItem>Start: { props.event.start } </ListGroupItem>
+                    <ListGroupItem>End: { props.event.end } </ListGroupItem>
+                    { props.event.reminders >0 ? <ListGroupItem>Reminders: { props.event.reminders.count } </ListGroupItem> : "Reminders: None" }
+                </ListGroup>
+                <Card.Body>
+                    <Button 
+                        variant="primary" 
+                        onClick={ () => deleteEvent(props.event.id) }
+                        >Delete
+                    </Button>
+                    <Button variant="primary">Comment</Button>
+                    {/* <Card.Link href="#">Delete</Card.Link>
+                    <Card.Link href="#">Comment</Card.Link> */}
+                </Card.Body>
+            </Card>
+
+            {/* <CreateThumbnailModal /> */}
+        </div>
 
         // <div className="card m-2 p-2">
         //     <img src={ null } className="card-img-top" alt="..." />

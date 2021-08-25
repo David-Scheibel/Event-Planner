@@ -1,20 +1,16 @@
-import React, { Component } from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 
 import Navbar from '../components/Navbar'
 
-class Profile extends Component {
+const Profile = ({ logout }) => {
 
-    render () {
+    return (
+        <div>
+            <Navbar logout={logout} />
 
-        return (
-            <div>
-                <Navbar />
-
-                PROFILE VIEW
-            </div>
-        )
-    }
+            PROFILE VIEW
+        </div>
+    )
 }
 
 export default Profile

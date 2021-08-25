@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+    skip_before_action :verify_authenticity_token
     # skip_before_action :logged_in?, only: [:create, :login, :index, :update]
 
     def index
@@ -33,13 +33,14 @@ class UsersController < ApplicationController
     def login
         # byebug
         
-        # user = User.find_by(email: params[:email])
-        # if user && user.authenticate(params[:password])
-        #     # render json: {current_user: current_user, user_id: user.id, email: user.email, token: encode_token({user_id: user.id}), message: "Logging in!"}
-        #     render json: {email: user.email, message: "Logging in!"}
-        # else
-        #     render json: {message: "Wrong username or password"}
-        # end
+        user = User.find_by(email: params[:email])
+        if user && user.authenticate(params[:password])
+            # render json: {current_user: current_user, user_id: user.id, email: user.email, token: encode_token({user_id: user.id}), message: "Logging in!"}
+            render json: {email: user.email, user: user.id, message: "Logging in!"}
+            # edit user object
+        else
+            render json: {message: "Wrong username or password"}
+        end
     end
 
 
