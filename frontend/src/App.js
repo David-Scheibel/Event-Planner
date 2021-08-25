@@ -26,8 +26,8 @@ class App extends Component {
         filteredEvent: {},
         profileObj: {},
 
-        profileId: 1,            // sets state to current user's profile
-        eventId: 0,              // sets state to selected event id
+        profileId: 0,            // reformat to use localStorage?
+        eventId: 0,
         nickname: "",
         username: "",
 
@@ -38,7 +38,7 @@ class App extends Component {
     }
 
 
-    componentDidMount() {        // make dynamic with auth
+    componentDidMount() {
         let profileID = localStorage.userID-1
 
         fetch(ProfileAPI)
@@ -70,11 +70,13 @@ class App extends Component {
     }
 
     reFormatEvents() {
+        let profileID = localStorage.userID-1
+
         fetch(ProfileAPI)
             .then(r => r.json())
             // .then(r => console.log(r[0].events))
             .then(r => this.setState({
-                previewEvents: this.formatEvents(r[0].events)
+                previewEvents: this.formatEvents(r[profileID].events)
             }))
             .then(console.log("reFormatEvents"))
     }
@@ -186,7 +188,10 @@ class App extends Component {
             profileObj: {},
     
             profileId: 0,
-            eventId: 0
+            eventId: 0,
+
+            nickname: "",
+            username: ""
         })
         localStorage.clear();
     }
@@ -253,6 +258,8 @@ class App extends Component {
                         logout={this.logout}
                     />
                 </Route>
+
+                <Login userLogin={this.userLogin} />
 
             </Switch>
 

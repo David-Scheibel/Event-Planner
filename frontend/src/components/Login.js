@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
  
-const LogIn = ({  }) => {
+const LogIn = ( props ) => {
 
     const [valid, setValid] = useState(0)
 
@@ -35,7 +35,7 @@ const LogIn = ({  }) => {
     return(
         <div style={{height: '100vh', paddingTop: '5%'}}>
         
-            <h2 className="" style={{paddingBottom: "5%", fontSize: '4em'}}>Event Planner</h2>
+            <h2 className="" style={{paddingBottom: "5%", fontSize: '4em'}}>RemindMe</h2>
             { Object.keys(valid).length > 1 ? <Redirect to='/calendar' /> : console.log('login didnt work') }
             <div className=''>
                 <Form onSubmit={(e) =>  logIn(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto'}}>

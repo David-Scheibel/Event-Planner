@@ -7,7 +7,7 @@ const WelcomeSplash = ( props ) => {
         return (
             <div>
                 {/* <h3>{`Welcome to your planner, ${nick == null ? "null" : nick}!`}</h3> */}
-                <h3>{nick == null ? " " : `Welcome to your planner, ${nick}!`}</h3>
+                <h3>{nick == "" ? "" : `Welcome to your planner, ${nick}!`}</h3>
             </div>
         )
 }
