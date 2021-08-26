@@ -8,7 +8,8 @@ import Navbar from "../components/Navbar"
 const Event = ({ event, stateRemoveEvent, logout }) => {
 
     return (
-        <div>
+
+        <div className="event">
 
             <Navbar logout={logout} />
 

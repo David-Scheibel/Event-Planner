@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 
-const Reminder = () => {
+const Footer = () => {
 
     return (
         <div>
@@ -10,4 +9,4 @@ const Reminder = () => {
     )
 }
 
-export default Reminder
+export default Footer

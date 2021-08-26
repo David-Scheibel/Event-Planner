@@ -24,20 +24,31 @@ const EventCard = ( props ) => {
 
     return (
 
-        <div>
+        <div className="event_card">
             <Card style={{ width: '25rem' }}>
+
                 { props.event.thumbnail == null ? 
                     <Button >Upload Image</Button> : 
                     <Card.Img variant="top" src= { props.event.thumbnail.image }/> 
                 }
+
                 <Card.Body>
                     <Card.Title> { props.event.title } </Card.Title>
                     <Card.Text> { props.event.description } </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
+
                     <ListGroupItem>Start: { props.event.start } </ListGroupItem>
-                    <ListGroupItem>End: { props.event.end } </ListGroupItem>
-                    { props.event.reminders >0 ? <ListGroupItem>Reminders: { props.event.reminders.count } </ListGroupItem> : "Reminders: None" }
+
+                    { props.event.end == "" ? "" :
+                        <ListGroupItem>End: { props.event.end } </ListGroupItem>
+                    }  
+
+                    { props.event.reminders >0 ? 
+                        <ListGroupItem>Reminders: { props.event.reminders.count } </ListGroupItem> : 
+                        "Reminders: None" 
+                    }
+
                 </ListGroup>
                 <Card.Body>
                     <Button 

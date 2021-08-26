@@ -36,8 +36,8 @@ const LogIn = ( props ) => {
     return(
         <div className="login" style={{height: '100vh', paddingTop: '5%'}}>
         
-            <AccessAlarm width="100px"/>
-            <h2 className="" style={{paddingBottom: "5%", fontSize: '4em'}}>RemindMe</h2>
+            <AccessAlarm className="alarm_icon"/>
+            <h2 className="" style={{paddingBottom:"3%", paddingTop:"0%", fontSize:'4em'}}>RemındME</h2>
 
             { Object.keys(valid).length > 1 ? <Redirect to='/calendar' /> : console.log('login didnt work') }
             <div className=''>
@@ -65,12 +65,13 @@ const LogIn = ( props ) => {
             
             <div style={{marginTop: '1%'}}>
                 Don't have an account? 
-                <Link to='/signup'><Button variant="secondary">Sign up</Button></Link>
+                <Link to='/signup'>
+                    <Button variant="secondary">Sign up</Button>
+                </Link>
             </div>
 
         </div>
     )
-
 }
 
 export default LogIn

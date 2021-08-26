@@ -57,7 +57,7 @@ const CreateEvent = ( props ) => {
 
     return (
 
-        <div>
+        <div className="create_event">
             <Navbar logout={props.logout} />
 
             <Form onSubmit={(e) => createEvent(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto'}}>

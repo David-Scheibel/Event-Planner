@@ -30,6 +30,12 @@
   color: white;
 }
 
+.alarm_icon{
+  transform: scale(1.6);
+  margin-bottom: -40px;
+  margin-right: 40px;
+}
+
 .signup {
   text-align: center;
   color: white;
@@ -42,6 +48,25 @@
   max-height: 80rem;
 }
 
+.event_card {
+  justify-content: center;
+  min-width: 4rem;
+  max-width: 50rem;
+  min-height: 4rem;
+  max-height: 80rem;
+}
+
+.event{
+  text-align: center;
+  color: white;
+  align-content: center;
+}
+
+.create_event {
+  text-align: center;
+  color: white;
+}
+
 /* THEME COLORS 
 #0B0C10 - black 
 #1F2833 - dark gray 
@@ -49,9 +74,9 @@
 #66FCF1 = neon green  
 #45A29E - sea green */
 .navbar{
-  /* background-color: #0B0C10; */
-  background-image: linear-gradient(to right, #1F2833 40%, #66FCF1 50%, #1F2833 80%);
-  height: 55px;
+  background-color: #0B0C10;
+  /* background-image: linear-gradient(to right, #1F2833 40%, #66FCF1 50%, #1F2833 80%); */
+  height: 50px;
   width: 100%;
   text-align: center;
   font-size: 22px;
@@ -113,7 +138,8 @@
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 .calendar_view{
+  padding-bottom: 50px;
 }
