@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import { withRouter } from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
@@ -8,6 +9,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 
 import WelcomeSplash from '../components/WelcomeSplash'
 import Navbar from '../components/Navbar'
+import FooterPage from '../components/FooterPage';
 
 const EventsAPI = "http://localhost:3000/events/"
 
@@ -90,7 +92,7 @@ const CalendarView = ( props ) => {
     return (
 
         <div>
-
+            <CssBaseline>
             <p className="navbar">
                 <Navbar 
                     updateModalShow={props.updateModalShow}
@@ -121,7 +123,8 @@ const CalendarView = ( props ) => {
                     />
                 </p>
             </p>
-
+            </CssBaseline>
+            <FooterPage />
         </div>
     )
 }

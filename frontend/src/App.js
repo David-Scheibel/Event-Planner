@@ -9,6 +9,7 @@ import Profile from './containers/Profile'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import CreateEvent from "./components/CreateEvent"
+import { CssBaseline } from '@material-ui/core';
 
 const ProfileAPI = "http://localhost:3000/profiles"
 
@@ -207,6 +208,7 @@ class App extends Component {
         <BrowserRouter>
             <div className="App">
 
+            <CssBaseline>
             <Switch>
                 <Route path='/' exact><Login /></Route>
 
@@ -262,6 +264,7 @@ class App extends Component {
                 <Login userLogin={this.userLogin} />
 
             </Switch>
+            </CssBaseline>
 
             </div>
         </BrowserRouter>

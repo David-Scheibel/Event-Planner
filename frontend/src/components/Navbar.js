@@ -9,26 +9,30 @@ export default function Navbar ({ logout }) {
 
     <AppBar position="static">
       <Toolbar>
+
         <IconButton edge="start" className="appbar" color="inherit" aria-label="menu">
           <MenuIcon />
         </IconButton>
-        <Link to="/calendar" onClick={ null }>
+
+        <Link className="navbar_planner" to="/calendar" onClick={ null }>
           <Typography variant="h6" className={ null }>
             Planner
           </Typography>
         </Link>
 
-        <Link to="/form" onClick={ null }>
+        <div className="button_holder">
+        <Link className="navbar_event" to="/form" onClick={ null }>
           <Button edge="finish" color="inherit">Create Event</Button>
         </Link>
 
-        <Link to="/profile" onClick={ null }>
+        <Link className="navbar_profile" to="/profile" onClick={ null }>
           <Button edge="finish" color="inherit">Profile</Button>
         </Link>
 
-        <Link to="/" onClick={logout}>
+        <Link className="navbar_logout" to="/" onClick={logout}>
           <Button edge="finish" color="inherit">Logout</Button>
         </Link>
+        </div>
 
       </Toolbar>
     </AppBar>

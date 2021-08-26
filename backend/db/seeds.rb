@@ -59,9 +59,9 @@ puts "creating events..."
                  start: "08-17-21, 15:00:00", 
                  end: "", description: "It's what I do. I drink and I know things.", 
                  profile_id: Profile.first.id)
-    Event.create(title: "Beach Week", 
+    Event.create(title: "Beach Week/end", 
                  start: "08-19-21, 21:00:00", 
-                 end: "", 
+                 end: "8/21/21, 12:00", 
                  description: "Because Dad ruined our first one.", 
                  profile_id: Profile.first.id)
     Event.create(title: "Paint Staring Contest", 
@@ -69,6 +69,31 @@ puts "creating events..."
                  end: "08-26-21, 12:00:00", 
                  description: "Paint is so alluring.", 
                  profile_id: Profile.first.id)
+    Event.create(title: "Renew Liscence", 
+                 start: "09-01-21, 17:00:00", 
+                 end: "", 
+                 description: "Paint is so alluring.", 
+                 profile_id: Profile.first.id)
+    Event.create(title: "9/11 20 Year Memorial", 
+                 start: "09-11-21, 12:00:00", 
+                 end: "", 
+                 description: "Send regards to NYC family.", 
+                 profile_id: Profile.first.id)
+    Event.create(title: "Dad's Birthday", 
+                 start: "09-15-21, 12:00:00", 
+                 end: "", 
+                 description: "Dad's 71st Birthday! Remember to get him something Nats related.", 
+                 profile_id: Profile.first.id)    
+    Event.create(title: "Class Reunion", 
+                 start: "09-26-21, 18:00:00", 
+                 end: "09-26-21, 22:00:00", 
+                 description: "Meet up with FlatIron cohort!", 
+                 profile_id: Profile.first.id)
+    Event.create(title: "Oktoberfest!", 
+                 start: "09-15-21, 12:00:00", 
+                 end: "09-17-21, 22:00:00", 
+                 description: "We're going even though it's canceled", 
+                 profile_id: Profile.first.id)   
 
     Event.create(title: "Pool Party", 
                  start: "08-03-21, 15:00:00", 

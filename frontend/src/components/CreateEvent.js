@@ -6,6 +6,7 @@ import DateTimePicker from 'react-datetime-picker'
 import { withRouter } from 'react-router-dom';
 
 import Navbar from './Navbar'
+import FooterPage from './FooterPage'
 
 const EventsAPI = "http://localhost:3000/events/"
 
@@ -59,8 +60,8 @@ const CreateEvent = ( props ) => {
 
         <div className="create_event">
             <Navbar logout={props.logout} />
-
-            <Form onSubmit={(e) => createEvent(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto'}}>
+            <h3 style={{paddingTop: '100px'}}> New Event </h3>
+            <Form onSubmit={(e) => createEvent(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto', paddingTop: '100px'}}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                     <Form.Label>Event Title</Form.Label>
                     <Form.Control 
@@ -82,7 +83,7 @@ const CreateEvent = ( props ) => {
                 </Form.Group> */}
 
                 <Form.Group className="mb-3" controlId="formBasicTitle"> 
-                    <Form.Label>Start Date</Form.Label>
+                    <Form.Label> {'Start Date: '} </Form.Label>
                     <DateTimePicker
                         onChange={ date => setStartDateTime(date) }
                         value={ startDateTime }
@@ -93,7 +94,7 @@ const CreateEvent = ( props ) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicTitle"> 
-                    <Form.Label>End Date</Form.Label>
+                    <Form.Label> {'End Date: '} </Form.Label>
                     <DateTimePicker
                         onChange={ date => setEndDateTime(date) }
                         value={ endDateTime }
@@ -107,6 +108,7 @@ const CreateEvent = ( props ) => {
                     Submit
                 </Button>
             </Form>
+
         </div>
     )
 }

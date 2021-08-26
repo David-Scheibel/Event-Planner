@@ -53,6 +53,11 @@ const EventCard = ( props ) => {
                 <Card.Body>
                     <Button 
                         variant="primary" 
+                        onClick={ null }
+                        >Edit
+                    </Button>
+                    <Button 
+                        variant="primary" 
                         onClick={ () => deleteEvent(props.event.id) }
                         >Delete
                     </Button>
