@@ -36,6 +36,7 @@ const EventCard = ( props ) => {
                     <Card.Title> { props.event.title } </Card.Title>
                     <Card.Text> { props.event.description } </Card.Text>
                 </Card.Body>
+
                 <ListGroup className="list-group-flush">
 
                     <ListGroupItem>Start: { props.event.start } </ListGroupItem>
@@ -46,10 +47,10 @@ const EventCard = ( props ) => {
 
                     { props.event.reminders >0 ? 
                         <ListGroupItem>Reminders: { props.event.reminders.count } </ListGroupItem> : 
-                        "Reminders: None" 
+                        'Reminders: None'
                     }
-
                 </ListGroup>
+
                 <Card.Body>
                     <Button 
                         variant="primary" 

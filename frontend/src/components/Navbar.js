@@ -2,12 +2,30 @@ import { Link } from 'react-router-dom';
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from 'react-dom'
 import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import { makeStyles } from '@material-ui/core';
+import { color } from '@material-ui/system';
+
+const useStyles = makeStyles({
+  root: {
+    color: '#C5C6C7',
+    borderColor: '#C5C6C7',
+    '&:hover': {
+      color: '#66fcf1',
+      border: '#66fcf1',
+    }
+  }, 
+  
+  
+})
+
 
 export default function Navbar ({ logout }) {
-   
+  
+  const classes = useStyles()
+  
   return(
 
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: 'rgb(50, 79, 116)'}}>
       <Toolbar>
 
         <IconButton edge="start" className="appbar" color="inherit" aria-label="menu">
@@ -15,22 +33,22 @@ export default function Navbar ({ logout }) {
         </IconButton>
 
         <Link className="navbar_planner" to="/calendar" onClick={ null }>
-          <Typography variant="h6" className={ null }>
+          <Typography variant="h6" className={ classes.root }>
             Planner
           </Typography>
         </Link>
 
-        <div className="button_holder">
+        <div className="button_holder" >
         <Link className="navbar_event" to="/form" onClick={ null }>
-          <Button edge="finish" color="inherit">Create Event</Button>
+          <Button className={classes.root} >Create Event</Button>
         </Link>
 
         <Link className="navbar_profile" to="/profile" onClick={ null }>
-          <Button edge="finish" color="inherit">Profile</Button>
+          <Button className={classes.root} >Profile</Button>
         </Link>
 
         <Link className="navbar_logout" to="/" onClick={logout}>
-          <Button edge="finish" color="inherit">Logout</Button>
+          <Button className={classes.root} >Logout</Button>
         </Link>
         </div>
 

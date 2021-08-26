@@ -9,9 +9,11 @@ const Event = ({ event, stateRemoveEvent, logout }) => {
 
     return (
 
-        <div className="event">
+        <div>
 
             <Navbar logout={logout} />
+
+            <div className="event">
 
             <h3>{event == null ? " " : `It's time for your ${event.title}!`}</h3>
 
@@ -20,6 +22,7 @@ const Event = ({ event, stateRemoveEvent, logout }) => {
                 stateRemoveEvent={stateRemoveEvent}
             />
 
+            </div>
         </div>
     )
 }

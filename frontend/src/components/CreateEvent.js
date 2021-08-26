@@ -58,9 +58,14 @@ const CreateEvent = ( props ) => {
 
     return (
 
-        <div className="create_event">
+        <div>
+
             <Navbar logout={props.logout} />
+
+            <div className="create_event">
+
             <h3 style={{paddingTop: '100px'}}> New Event </h3>
+            
             <Form onSubmit={(e) => createEvent(e)} style={{maxWidth: '300px', width: '50%', margin: 'auto', paddingTop: '100px'}}>
                 <Form.Group className="mb-3" controlId="formBasicTitle">
                     <Form.Label>Event Title</Form.Label>
@@ -108,7 +113,7 @@ const CreateEvent = ( props ) => {
                     Submit
                 </Button>
             </Form>
-
+            </div>
         </div>
     )
 }

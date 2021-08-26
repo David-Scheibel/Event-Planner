@@ -48,6 +48,7 @@
 .card {
   justify-content: center;
   display: flex;
+  /* background-color: red; */
   min-width: 4rem;
   max-width: 50rem;
   min-height: 4rem;
@@ -57,6 +58,7 @@
 .event_card {
   justify-content: center;
   display: flex;
+  color: black;
   min-width: 4rem;
   max-width: 50rem;
   min-height: 4rem;
@@ -64,6 +66,7 @@
 }
 
 .event{
+  margin-top: 3%;
   text-align: center;
   color: white;
   align-content: center;
@@ -107,17 +110,20 @@
   text-decoration: none;
   /* margin-right: -30%; */
   color: #C5C6C7;
+  border-color: #C5C6C7;
   /* border-color: white;
   border-radius: 18px; */
   border-style: solid;
   border-width: 2px;
   padding: 1px;
   margin-left: 10px;
+  
 }
 .navbar_profile{
   text-decoration: none;
   /* margin-right: -30%; */
   color: #C5C6C7;
+  border-color: #C5C6C7;
   /* border-color: white;
   border-radius: 18px; */
   border-style: solid;
@@ -129,6 +135,7 @@
   text-decoration: none;
   /* margin-right: -30%; */
   color: #C5C6C7;
+  border-color: #C5C6C7;
   /* border-color: white;
   border-radius: 18px; */
   border-style: solid;
@@ -162,7 +169,7 @@
   height: 40%;
   width: 60%;
   margin-left: 20%;
-  background-color: #C5C6C7;
+  background-color: #d8d8d8;
   justify-content: center;
   padding-left: 25px;
   padding-right: 25px;
@@ -170,6 +177,19 @@
   padding-bottom: 25px;
   filter: drop-shadow(10px 10px 4px #2b2b2b);
 }
+/* .fc-daygrid-day-events{
+  color: black;
+  margin-right: 10%;
+  justify-content: center;
+}
+.fc-daygrid-event-dot{
+  color: black;
+}
+.fc-daygrid-event{
+  color: black;
+  margin-right: 20%;
+  justify-content: center;
+} */
 .calendar_view{
   padding-bottom: 50px;
 }
